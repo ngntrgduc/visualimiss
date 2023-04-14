@@ -9,6 +9,6 @@ pip install visualimiss
 
 # Features
 Some features differ from the original one:
-- `matrix()`, `bar()`
+- Have `matrix()`, `bar()` modified function from the original one
 - Simpler and faster
 - Maybe more readable?
