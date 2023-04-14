@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from matplotlib import ticker
 from .utils import nullity_sort
 
-
 def matrix(df, sort=None, figsize=(25, 10), fontsize=12, 
            color=(60, 60, 60), show_label=True, label_rotation=45):
     
@@ -12,7 +11,7 @@ def matrix(df, sort=None, figsize=(25, 10), fontsize=12,
 
     z = df.notnull().values
     x = np.zeros((height, width, 3), dtype=np.uint32)
-    x[z < 0.5] = (255, 255, 255)
+    x[z < 0.5] = (255, 255, 255) # White color
     x[z > 0.5] = color
 
     plt.figure(figsize=figsize)
@@ -50,23 +49,23 @@ def bar(df, sort=None, figsize=(25, 10), fontsize=12,
     (valid_counts / len(df)).plot.bar(**plot_args)
 
     axes = [ax1]
-    ax1.set_xticklabels(ax1.get_xticklabels(), 
-                        rotation=label_rotation, ha='right', fontsize=fontsize)
-    ax1.set_ylim([0, 1])
-    ax1.yaxis.set_major_formatter(ticker.PercentFormatter(1.0)) # Make percent format
-    
-    # Display total of valid data above the plot.
-    ax2 = ax1.twiny()
-    ax2.set_xticks(ax1.get_xticks())
-    ax2.set_xlim(ax1.get_xlim())
-    ax2.set_xticklabels(valid_counts.values, 
-                        rotation=label_rotation, ha='left', fontsize=fontsize)
-    axes.append(ax2)
 
-    if not show_label:
+    if show_label:
+        ax1.set_xticklabels(ax1.get_xticklabels(), 
+                            rotation=label_rotation, ha='right', fontsize=fontsize)
+        ax1.set_ylim([0, 1])
+        ax1.yaxis.set_major_formatter(ticker.PercentFormatter(1.0)) # Make % format
+        
+        # Display total of valid data above the plot.
+        ax2 = ax1.twiny()
+        ax2.set_xticks(ax1.get_xticks())
+        ax2.set_xlim(ax1.get_xlim())
+        ax2.set_xticklabels(valid_counts.values, 
+                                rotation=label_rotation, ha='left', fontsize=fontsize)
+        axes.append(ax2)
+    else:
         ax1.set_xticks([])
         ax1.set_yticks([])
-        ax2.set_xticks([])
 
     for ax in axes:
         ax.spines[['top', 'right', 'bottom', 'left']].set_visible(False)
