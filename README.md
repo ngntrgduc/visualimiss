@@ -30,16 +30,34 @@ df = pd.read_csv("https://raw.githubusercontent.com/ResidentMario/missingno-data
 ```python
 visualimiss.matrix(df)
 ```
+![image](https://user-images.githubusercontent.com/47920109/232233336-76c87128-c1fe-46cf-bb0a-ddf7b584da16.png)
+
 
 ## `bar`
 
 ```python
 visualimiss.bar(df)
 ```
+![image](https://user-images.githubusercontent.com/47920109/232233350-9ca056c5-f3f3-4a68-ace2-a2fbab520e2d.png)
+
 
 # Configuration
 ## Sorting
+```python
+visualimiss.matrix(df, sort='asc')
+```
+![image](https://user-images.githubusercontent.com/47920109/232233399-aa4055e9-633f-4201-9a87-44da9e4ae1a4.png)
 
 ## Rotate, hide label
+```python
+# visualimiss.matrix(df, label_rotation=90)
+visualimiss.matrix(df, show_label=False)
+```
+![image](https://user-images.githubusercontent.com/47920109/232233625-edbc6586-68f8-4622-80e9-07aa1c1168bb.png)
 
 ## Change color, font size
+```python
+visualimiss.matrix(df, color=(43, 102, 189), fontsize=16)
+```
+![image](https://user-images.githubusercontent.com/47920109/232233769-fe5738f9-dcf5-4663-b9bb-a5bd7f9709e6.png)
+
