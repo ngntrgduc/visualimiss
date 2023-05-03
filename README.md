@@ -41,6 +41,44 @@ visualimiss.bar(df)
 ![image](https://user-images.githubusercontent.com/47920109/232233350-9ca056c5-f3f3-4a68-ace2-a2fbab520e2d.png)
 
 
+## `info`
+
+```python
+visualimiss.info(df)
+```
+
+```
+- DataFrame has 7303 rows, 26 columns
+- Memory usage: 1.519152 MB
+                               Null count    Dtype
+DATE                                    0   object
+TIME                                    0   object
+BOROUGH                               383   object
+ZIP CODE                              384  float64
+LATITUDE                                0  float64
+LONGITUDE                               0  float64
+LOCATION                                0   object
+ON STREET NAME                       1065   object
+CROSS STREET NAME                    1137   object
+OFF STREET NAME                      6542   object
+NUMBER OF PERSONS INJURED               0    int64
+NUMBER OF PERSONS KILLED                0    int64
+NUMBER OF PEDESTRIANS INJURED           0    int64
+NUMBER OF PEDESTRIANS KILLED            0    int64
+NUMBER OF CYCLISTS INJURED           7303  float64
+NUMBER OF CYCLISTS KILLED            7303  float64
+CONTRIBUTING FACTOR VEHICLE 1           0   object
+CONTRIBUTING FACTOR VEHICLE 2        1085   object
+CONTRIBUTING FACTOR VEHICLE 3        7000   object
+CONTRIBUTING FACTOR VEHICLE 4        7244   object
+CONTRIBUTING FACTOR VEHICLE 5        7289   object
+VEHICLE TYPE CODE 1                    58   object
+VEHICLE TYPE CODE 2                  1520   object
+VEHICLE TYPE CODE 3                  7019   object
+VEHICLE TYPE CODE 4                  7249   object
+VEHICLE TYPE CODE 5                  7291   object
+```
+
 # Configuration
 ## Sorting
 ```python
