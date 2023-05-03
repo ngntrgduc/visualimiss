@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import ticker
 from .utils import nullity_sort
@@ -43,12 +44,11 @@ def bar(df, sort=None, figsize=(25, 10), fontsize=12,
     df = nullity_sort(df, sort=sort)
         
     ax1 = plt.gca()
+    axes = [ax1]
 
     plot_args = {'figsize': figsize, 'fontsize': fontsize, 'color': color, 'ax': ax1}
-    valid_counts = len(df) - df.isnull().sum()
+    valid_counts = df.notnull().sum()
     (valid_counts / len(df)).plot.bar(**plot_args)
-
-    axes = [ax1]
 
     if show_label:
         ax1.set_xticklabels(ax1.get_xticklabels(), 
@@ -73,3 +73,27 @@ def bar(df, sort=None, figsize=(25, 10), fontsize=12,
         ax.yaxis.set_ticks_position('none')
 
     return ax1
+
+def info(df, print_null=True):
+    """This function doesn't visualize but give the information of dataframe,
+        a more readable version of pandas.DataFrame.info().
+    """
+    print(f'- DataFrame has {len(df)} rows, {len(df.columns)} columns')
+    print(f'- Memory usage: {sum(df.memory_usage())/1000000} MB')
+    
+    if print_null:
+        name = 'Null count'
+        count = df.isnull().sum()
+    else:
+        name = 'Non-Null count'
+        count = df.notnull().sum()
+
+    # if sort == 'asc':
+        # count = count.sort_values()
+    # elif sort == 'desc':
+        # count = count.sort_values(ascending=False)
+    
+    info = pd.DataFrame(data={name: count,
+                              'Dtype': df.dtypes.to_string(index=False).split()})
+    print(info)
+    pass
